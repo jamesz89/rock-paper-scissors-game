@@ -56,8 +56,16 @@ function playRound(playerSelection) {
       playerScore++;
     }
   } else {
-    //Game is over. Show Score. Play Again?
-    output.innerHTML = `<h2>Player: ${playerScore} - Computer: ${computerScore}</h2>`;
+    output.innerHTML = `
+	<h2 class="result">Game Over</h2>
+	<h2>Player: ${playerScore} - Computer: ${computerScore}</h2>`;
+    if (playerScore > computerScore) {
+      output.innerHTML += `<h2>Congrats! You beat the computer</h2>`;
+    } else if (playerScore < computerScore) {
+      output.innerHTML += `<h2>Too bad! You got your ass kicked</h2>`;
+    } else {
+      output.innerHTML += `<h2>Well, nobody won...</h2>`;
+    }
     playAgain.style.display = "block";
   }
 }
