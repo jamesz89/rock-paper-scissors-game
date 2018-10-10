@@ -6,7 +6,8 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(243, 222, 38);
+  background-color: #333;
+  color: aliceblue;
 }
 
 h1 {
@@ -44,13 +45,44 @@ h2 {
 }
 
 #rock {
-  background-color: rgb(247, 51, 51);
+  background-color: hsl(360, 80%, 50%);
+  transition: background-color ease-in-out 0.25s;
+}
+
+#rock:hover {
+  background-color: hsl(360, 80%, 55%);
 }
 
 #paper {
-  background-color: rgb(29, 216, 29);
+  background-color: hsl(120, 35%, 50%);
+  transition: background-color ease-in-out 0.25s;
+}
+
+#paper:hover {
+  background-color: hsl(120, 50%, 55%);
 }
 
 #scissors {
-  background-color: rgb(36, 36, 255);
+  background-color: hsl(245, 80%, 50%);
+  transition: background-color ease-in-out 0.25s;
+}
+
+#scissors:hover {
+  background-color: hsl(245, 80%, 55%);
+}
+
+#playAgain {
+  margin: 2.5rem auto;
+  background-color: gold;
+  font-size: 3rem;
+  display: none;
+}
+
+.selected {
+  color: yellow;
+}
+
+.result {
+  text-transform: uppercase;
+  color: yellow;
 }
