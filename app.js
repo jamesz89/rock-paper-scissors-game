@@ -5,6 +5,7 @@ const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const output = document.querySelector("#output");
 const playAgain = document.querySelector("#playAgain");
+const scoreboard = document.querySelector("#scoreboard");
 let computerSelection = "";
 let playerSelection = "";
 let round = 5;
@@ -41,6 +42,8 @@ function playRound(playerSelection) {
     computerSelection = computerPlay();
     if (playerSelection == computerSelection) {
       output.innerHTML = `<h2>You both chose <span class="result">${playerSelection}</span>, it's a Tie!</h2>`;
+      computerScore++;
+      playerScore++;
       round--;
     } else if (
       (playerSelection == "rock" && computerSelection == "paper") ||
@@ -55,10 +58,10 @@ function playRound(playerSelection) {
       round--;
       playerScore++;
     }
+    updateScore();
   } else {
     output.innerHTML = `
-	<h2 class="result">Game Over</h2>
-	<h2>Player: ${playerScore} - Computer: ${computerScore}</h2>`;
+	<h2 class="result">Game Over</h2>`;
     if (playerScore > computerScore) {
       output.innerHTML += `<h2>Congrats! You beat the computer</h2>`;
     } else if (playerScore < computerScore) {
@@ -70,12 +73,19 @@ function playRound(playerSelection) {
   }
 }
 
+function updateScore() {
+  scoreboard.innerHTML = `
+    <span class="score">Computer - <span class="score-number">${computerScore}</span>   You - <span class="score-number">${playerScore}</span>
+  `;
+}
+
 function restart() {
   playAgain.style.display = "none";
   output.innerHTML = "";
   round = 5;
   playerScore = 0;
   computerScore = 0;
+  updateScore();
 }
 
 // Event Listeners
